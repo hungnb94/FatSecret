@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="QuestionActivityChoiceButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/choice_height</item>
+        <item name="android:background">@drawable/border_button</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/txt_btn_welcome</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/padding_choice</item>
+    </style>
+
+    <style name="QuestionActivityTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/mg_title_app</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/txt_sign_in</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="date_picker_theme" parent="@android:style/Widget.DatePicker"/>
+
+</resources>

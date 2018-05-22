@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SettingActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/mg_layout"
+            android:paddingRight="@dimen/mg_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:text="@string/account"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/llLogout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_out"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRegion"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:text="@string/exercise_tracking"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise_diary"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/switchExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apps_devices"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAppsDevices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:text="@string/data_sharing"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_setting_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/google_fit"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/google_fit_guide" />
+
+                </LinearLayout>
+
+
+                <Switch
+                    android:id="@+id/switchGoogleFit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

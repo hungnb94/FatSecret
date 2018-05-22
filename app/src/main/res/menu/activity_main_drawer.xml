@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/menudrawer_icon_settings_default"
+            android:title="@string/action_settings" />
+    </group>
+
+    <!--<item android:title="">-->
+    <!--<menu>-->
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/menudrawer_icon_home_default"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/action_diary"
+        android:icon="@drawable/menudrawer_icon_fooddiary_default"
+        android:title="@string/diary" />
+    <item
+        android:icon="@drawable/menudrawer_icon_reports_default"
+        android:id="@+id/action_reports"
+        android:title="@string/reports" />
+    <item
+        android:id="@+id/action_weight"
+        android:icon="@drawable/menudrawer_icon_reports_default"
+        android:title="@string/weight" />
+    <item
+        android:id="@+id/action_diet_calendar"
+        android:icon="@drawable/menudrawer_icon_weighttracker_default"
+        android:title="@string/diet_calendar" />
+    <item
+        android:id="@+id/action_photo_album"
+        android:icon="@drawable/album_image_placeholder"
+        android:title="@string/photo_album" />
+    <item
+        android:id="@+id/action_my_professionals"
+        android:icon="@drawable/menudrawer_icon_professional_default"
+        android:title="@string/my_professionals" />
+    <!--</menu>-->
+    <!--</item>-->
+
+</menu>

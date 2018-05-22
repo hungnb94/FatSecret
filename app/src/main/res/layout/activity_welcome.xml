@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.WelcomeActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/ic_launcher_white"
+            android:layout_height="@dimen/ic_launcher_white"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/mg_ic_launcher"
+            android:src="@drawable/widget_logo_default"
+            android:transitionName="@string/icon_app" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mg_title_app"
+            android:text="@string/app_name_lowercase"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_title_app" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/mg_layout"
+        android:layout_weight="5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_btn_welcome"
+            android:layout_marginTop="@dimen/mg_title_app"
+            android:background="@color/colorWhite"
+            android:text="@string/start_now"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_btn_welcome"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_mem"
+                android:textSize="@dimen/txt_small" />
+
+            <TextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distant_txt"
+                android:text="@string/sign_in"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_small" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agree_term_policy"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/term_and_condition"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_small"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distant_txt"
+                android:layout_marginRight="@dimen/distant_txt"
+                android:text="@string/and"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_small" />
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

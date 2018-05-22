@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".fragment.Welcome2Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/mg_layout"
+        android:paddingRight="@dimen/mg_layout">
+
+        <TextView
+            style="@style/QuestionActivityTitle"
+            android:text="@string/how_much_weight" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/mg_layout"
+            android:layout_marginTop="@dimen/mg_title_app"
+            android:text="@string/can_change"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_btn_welcome"
+            android:layout_marginTop="@dimen/mg_layout"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/border_input_weight"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/txt_sign_in" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/border_button"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/stroke_width"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/img_next"
+                android:layout_height="@dimen/img_next"
+                android:layout_marginTop="@dimen/mg_layout"
+                android:alpha="0.5"
+                android:background="@drawable/next_page" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

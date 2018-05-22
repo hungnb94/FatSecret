@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "635726513832",
+    "firebase_url": "https://fatsecret-2b84e.firebaseio.com",
+    "project_id": "fatsecret-2b84e",
+    "storage_bucket": "fatsecret-2b84e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635726513832:android:4570e3b832281afd",
+        "android_client_info": {
+          "package_name": "com.hb.fatsecret"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635726513832-5ocscckdpvnb4crkda3qukfqipb36aqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hb.fatsecret",
+            "certificate_hash": "84a4578037defbb70a94a5119fdba10d3f2fca6c"
+          }
+        },
+        {
+          "client_id": "635726513832-i49cjpeu3t3d0ssihjqj5t3f81oma6el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfxnDwrXRL8Io4-QoKPGXgC5m4dxOB-uc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635726513832-i49cjpeu3t3d0ssihjqj5t3f81oma6el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

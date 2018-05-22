@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".fragment.Welcome1Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/mg_layout"
+        android:paddingRight="@dimen/mg_layout">
+
+        <TextView
+            style="@style/QuestionActivityTitle"
+            android:text="@string/your_goal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvWeightLoss"
+                style="@style/QuestionActivityChoiceButton"
+                android:text="@string/weight_loss" />
+
+            <TextView
+                android:id="@+id/tvMaintainWeight"
+                style="@style/QuestionActivityChoiceButton"
+                android:layout_marginTop="@dimen/distant_choice_question"
+                android:text="@string/maintain_weight" />
+
+            <TextView
+                android:id="@+id/tvWeightGain"
+                style="@style/QuestionActivityChoiceButton"
+                android:layout_marginTop="@dimen/distant_choice_question"
+                android:text="@string/weight_gain" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/img_next"
+                android:layout_height="@dimen/img_next"
+                android:alpha="0.5"
+                android:background="@drawable/next_page" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

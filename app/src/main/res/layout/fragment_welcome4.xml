@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/mg_layout"
+    android:paddingRight="@dimen/mg_layout"
+    tools:context=".fragment.Welcome4Fragment">
+
+    <TextView
+        style="@style/QuestionActivityTitle"
+        android:text="@string/activiies_level" />
+
+    <LinearLayout
+        android:id="@+id/llSedentary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mg_title_app"
+        android:background="@drawable/border_button"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_choice">
+
+
+        <TextView
+            android:id="@+id/tvSedentaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sedentary"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_btn_welcome" />
+
+        <TextView
+            android:id="@+id/tvSedentaryDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sedentary_detail"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLowActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distant_choice_question"
+        android:background="@drawable/border_button"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_choice">
+
+
+        <TextView
+            android:id="@+id/tvLowActiveTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/low_active"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_btn_welcome" />
+
+        <TextView
+            android:id="@+id/tvLowActiveDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/low_active_detail"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distant_choice_question"
+        android:background="@drawable/border_button"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_choice">
+
+        <TextView
+            android:id="@+id/tvActiveTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/active"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_btn_welcome" />
+
+        <TextView
+            android:id="@+id/tvActiveDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/active_detail"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llVeryActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distant_choice_question"
+        android:background="@drawable/border_button"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_choice">
+
+
+        <TextView
+            android:id="@+id/tvVeryActiveTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_active"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_btn_welcome" />
+
+        <TextView
+            android:id="@+id/tvVeryActiveDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_active_detail"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="@dimen/img_next"
+            android:layout_height="@dimen/img_next"
+            android:alpha="0.5"
+            android:background="@drawable/next_page" />
+
+    </LinearLayout>
+
+</LinearLayout>
