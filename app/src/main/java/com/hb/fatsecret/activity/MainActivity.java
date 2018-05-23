@@ -16,8 +16,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hb.fatsecret.R;
 import com.hb.fatsecret.dialog.SelectCountryDialog;
+import com.hb.fatsecret.model.User;
 
 import butterknife.ButterKnife;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity
     private final String TAG = MainActivity.class.getSimpleName();
 
     public static FirebaseUser firebaseUser;
+    private DatabaseReference ref;
+    private User userObject;
 
     TextView tvUsername, tvEmail, tvRegion;
     LinearLayout llRegion;
@@ -48,7 +53,8 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+        ref = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(firebaseUser.getUid());
         initView();
         addEvent();
     }

@@ -26,8 +26,6 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 
-import static com.hb.fatsecret.utils.Constants.SEPERATOR;
-
 public class Welcome6Fragment extends Fragment {
     private final String[] arr = {"cm", "ft", "in"};
     private final int position = 5;
@@ -40,6 +38,7 @@ public class Welcome6Fragment extends Fragment {
     ImageButton button;
 
     Unbinder unbinder;
+    private double height;
 
     public Welcome6Fragment() {
         // Required empty public constructor
@@ -64,19 +63,8 @@ public class Welcome6Fragment extends Fragment {
     }
 
     private void updateValueFromActivity() {
-        Object answer = QuestionActivity.answers.get(position);
-        if (answer instanceof String) {
-            String str = (String) answer;
-            int pos = str.indexOf(Constants.SEPERATOR);
-            editText.setText(str.substring(0, pos));
-            String type = str.substring(pos + 1);
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i].equals(type)) {
-                    spinner.setSelection(i);
-                    return;
-                }
-            }
-        }
+        double height = QuestionActivity.userObject.getInformation().getHeight();
+        if (height > 0) editText.setText(String.valueOf(height));
     }
 
     @OnTextChanged(R.id.edittext)
@@ -90,23 +78,16 @@ public class Welcome6Fragment extends Fragment {
         if (button.getAlpha() < 1) return;
         //Check user weight
         //If too low or too high then alert to user
-        String weightStr = (String) QuestionActivity.answers.get(Constants.INPUT_CURRENT_WEIGHT_STRING);
-        int pos = weightStr.indexOf(Constants.SEPERATOR);
-        double weight = Double.valueOf(weightStr.substring(0, pos));
-        String type = weightStr.substring(pos + 1);
-        if (type.equalsIgnoreCase("lb")) {
-            weight = Utility.changeLbToKg(weight);
-        }
-        double height = Double.valueOf(editText.getText().toString());
+        double weight = QuestionActivity.userObject.getInformation().getCurrentWeight();
+        height = Double.valueOf(editText.getText().toString());
         if (arr[spinner.getSelectedItemPosition()].equalsIgnoreCase("in")) {
             height = Utility.changeInToCm(height);
         } else if (arr[spinner.getSelectedItemPosition()].equalsIgnoreCase("ft")) {
             height = Utility.changeFtToCm(height);
         }
-        //Change cm to m
-        height /=100;
-        int goal = (int) QuestionActivity.answers.get(Constants.INPUT_GOAL_INT);
-        int bodyType = WeightStandard.getBMIWeightType(weight, height, true);
+        double heightInMet = height / 100; //height in (unit) met
+        int goal = QuestionActivity.userObject.getInformation().getGoal();
+        int bodyType = WeightStandard.getBMIWeightType(weight, heightInMet, true);
         if (bodyType == Constants.BMI_UNDERWEIGHT) {
             if (goal == Constants.CHOICE_WEIGHT_LOSS || goal == Constants.CHOICE_MAINTAIN_WEIGHT) {
                 String title = getResources().getString(R.string.please_note);
@@ -128,14 +109,15 @@ public class Welcome6Fragment extends Fragment {
                 return;
             }
         }
+        QuestionActivity.userObject.getInformation().setHeight(height);
         QuestionActivity activity = (QuestionActivity) getContext();
-        String answer = editText.getText().toString() + SEPERATOR + arr[spinner.getSelectedItemPosition()];
-        activity.answerQuestion(position, answer);
+        activity.goToNextFragment(position);
     }
 
     /**
      * Show alert dialog
-     * @param title of dialog
+     *
+     * @param title   of dialog
      * @param message of dialog
      */
     private void showAlertDialog(String title, String message) {
@@ -149,9 +131,9 @@ public class Welcome6Fragment extends Fragment {
                 .setMessage(message)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        QuestionActivity.userObject.getInformation().setHeight(height);
                         QuestionActivity activity = (QuestionActivity) getContext();
-                        String answer = editText.getText().toString() + SEPERATOR + arr[spinner.getSelectedItemPosition()];
-                        activity.answerQuestion(position, answer);
+                        activity.goToNextFragment(position);
                         dialog.dismiss();
                     }
                 })

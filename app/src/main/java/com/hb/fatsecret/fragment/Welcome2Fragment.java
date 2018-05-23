@@ -1,6 +1,7 @@
 package com.hb.fatsecret.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,9 @@ import android.widget.Spinner;
 
 import com.hb.fatsecret.R;
 import com.hb.fatsecret.activity.QuestionActivity;
+import com.hb.fatsecret.model.User;
 import com.hb.fatsecret.utils.Constants;
+import com.hb.fatsecret.utils.Utility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,9 +23,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 
-import static com.hb.fatsecret.utils.Constants.SEPERATOR;
-
-public class Welcome2Fragment extends WelcomeBaseFragment {
+public class Welcome2Fragment extends Fragment {
     private final String[] arr = {"kg", "lb"};
 
     private final int position = 1;
@@ -59,12 +60,9 @@ public class Welcome2Fragment extends WelcomeBaseFragment {
     }
 
     private void updateValueFromActivity() {
-        Object value = QuestionActivity.answers.get(position);
-        if (value instanceof String) {
-            String str = (String) value;
-            int pos = str.indexOf(SEPERATOR);
-            editText.setText(str.substring(0, pos));
-        }
+        User user = QuestionActivity.userObject;
+        double value = user.getInformation().getTargetWeight();
+        if (value > 0) editText.setText(String.valueOf(value));
     }
 
 //    @OnClick(R.id.ivClose)
@@ -82,8 +80,12 @@ public class Welcome2Fragment extends WelcomeBaseFragment {
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
         QuestionActivity activity = (QuestionActivity) getContext();
-        String answer = editText.getText().toString() + SEPERATOR + arr[spinner.getSelectedItemPosition()];
-        activity.answerQuestion(position, answer);
+        double weight = Double.valueOf(editText.getText().toString());
+        if (arr[spinner.getSelectedItemPosition()].equalsIgnoreCase("lb")){
+            weight = Utility.changeLbToKg(weight);
+        }
+        QuestionActivity.userObject.getInformation().setTargetWeight(weight);
+        activity.goToNextFragment(position);
     }
 
     @Override

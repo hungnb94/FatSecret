@@ -4,16 +4,16 @@ public class User {
     String email;
     String username;
     String password;
-    Purpose purpose;
+    Information information;
 
     public User() {
     }
 
-    public User(String email, String username, String password, Purpose purpose) {
+    public User(String email, String username, String password, Information information) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.purpose = purpose;
+        this.information = information;
     }
 
     public String getEmail() {
@@ -40,11 +40,11 @@ public class User {
         this.password = password;
     }
 
-    public Purpose getPurpose() {
-        return purpose;
+    public Information getInformation() {
+        return information;
     }
 
-    public void setPurpose(Purpose purpose) {
-        this.purpose = purpose;
+    public void setInformation(Information information) {
+        this.information = information;
     }
 }

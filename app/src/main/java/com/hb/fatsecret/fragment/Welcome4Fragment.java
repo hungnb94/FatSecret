@@ -81,18 +81,16 @@ public class Welcome4Fragment extends Fragment {
     }
 
     private void updateValueFromActivity() {
-        Object answer = QuestionActivity.answers.get(position);
-        if (answer instanceof Integer) {
-            choice = (int) answer;
-            if (choice == CHOICE_SEDENTARY) {
-                choiceSedentary();
-            } else if (choice == CHOICE_LOW_ACTIVE) {
-                choiceLowActive();
-            } else if (choice == CHOICE_ACTIVE) {
-                choiceActive();
-            } else if (choice == CHOICE_VERY_ACTIVE) {
-                choiceVeryActive();
-            }
+        int answer = QuestionActivity.userObject.getInformation().getActivityLevel();
+        choice = answer;
+        if (choice == CHOICE_SEDENTARY) {
+            choiceSedentary();
+        } else if (choice == CHOICE_LOW_ACTIVE) {
+            choiceLowActive();
+        } else if (choice == CHOICE_ACTIVE) {
+            choiceActive();
+        } else if (choice == CHOICE_VERY_ACTIVE) {
+            choiceVeryActive();
         }
     }
 
@@ -230,8 +228,9 @@ public class Welcome4Fragment extends Fragment {
     @OnClick(R.id.btnNext)
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
+        QuestionActivity.userObject.getInformation().setActivityLevel(choice);
         QuestionActivity activity = (QuestionActivity) getContext();
-        activity.answerQuestion(position, choice);
+        activity.goToNextFragment(position);
     }
 
     @Override

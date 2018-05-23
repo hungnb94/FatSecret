@@ -1,6 +1,7 @@
 package com.hb.fatsecret.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import butterknife.Unbinder;
 import static com.hb.fatsecret.utils.Constants.CHOICE_FEMALE;
 import static com.hb.fatsecret.utils.Constants.CHOICE_MALE;
 
-public class Welcome3Fragment extends WelcomeBaseFragment {
+public class Welcome3Fragment extends Fragment {
     private final String TAG = Welcome3Fragment.class.getSimpleName();
 
     private final int position = 2;
@@ -57,14 +58,11 @@ public class Welcome3Fragment extends WelcomeBaseFragment {
     }
 
     private void updateValueFromActivity() {
-        Object value = QuestionActivity.answers.get(position);
-        if (value instanceof Integer) {
-            int i = (int) value;
-            if (i == CHOICE_FEMALE) {
-                chooseFemale();
-            } else if (i == CHOICE_MALE) {
-                chooseMale();
-            }
+        int value = QuestionActivity.userObject.getInformation().getGender();
+        if (value == CHOICE_FEMALE) {
+            chooseFemale();
+        } else if (value == CHOICE_MALE) {
+            chooseMale();
         }
     }
 
@@ -80,13 +78,13 @@ public class Welcome3Fragment extends WelcomeBaseFragment {
 
     private void chooseFemale() {
         Log.e(TAG, "Choice female");
-        if (choice==CHOICE_FEMALE) return;
+        if (choice == CHOICE_FEMALE) return;
 
         int prevChoice = choice;
         choice = CHOICE_FEMALE;
         ivFemale.setBackground(QuestionActivity.stateClick);
         ivFemale.setImageResource(R.drawable.onboarding_image_female_selected);
-        if(prevChoice==CHOICE_MALE) {
+        if (prevChoice == CHOICE_MALE) {
             ivMale.setBackground(QuestionActivity.stateNormal);
             ivMale.setImageResource(R.drawable.onboarding_image_male_disabled);
         }
@@ -100,13 +98,13 @@ public class Welcome3Fragment extends WelcomeBaseFragment {
 
     private void chooseMale() {
         Log.e(TAG, "Choice male");
-        if (choice==CHOICE_MALE) return;
+        if (choice == CHOICE_MALE) return;
 
-        int prevChoice= choice;
+        int prevChoice = choice;
         choice = CHOICE_MALE;
         ivMale.setBackground(QuestionActivity.stateClick);
         ivMale.setImageResource(R.drawable.onboarding_image_male_selected);
-        if (prevChoice==CHOICE_FEMALE){
+        if (prevChoice == CHOICE_FEMALE) {
             ivFemale.setBackground(QuestionActivity.stateNormal);
             ivFemale.setImageResource(R.drawable.onboarding_image_female_disabled);
         }
@@ -116,8 +114,9 @@ public class Welcome3Fragment extends WelcomeBaseFragment {
     @OnClick(R.id.btnNext)
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
+        QuestionActivity.userObject.getInformation().setGender(choice);
         QuestionActivity activity = (QuestionActivity) getContext();
-        activity.answerQuestion(position, choice);
+        activity.goToNextFragment(position);
     }
 
     @Override

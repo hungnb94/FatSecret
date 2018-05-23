@@ -58,10 +58,9 @@ public class Welcome8Fragment extends Fragment
     }
 
     private void updateValueFromActivity() {
-        Object answer = QuestionActivity.answers.get(position);
-        if (answer instanceof String){
-            String str = (String) answer;
-            updateCountry(str);
+        String region = QuestionActivity.userObject.getInformation().getRegion();
+        if (region!=null){
+            updateCountry(region);
         }
     }
 
@@ -86,8 +85,10 @@ public class Welcome8Fragment extends Fragment
     @OnClick(R.id.btnNext)
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
+        String region = textView.getText().toString();
+        QuestionActivity.userObject.getInformation().setRegion(region);
         QuestionActivity activity = (QuestionActivity) getContext();
-        activity.answerQuestion(position, textView.getText().toString());
+        activity.goToNextFragment(position);
     }
 
     private void updateCountry(String country) {

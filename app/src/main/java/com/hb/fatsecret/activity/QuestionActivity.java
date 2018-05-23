@@ -11,14 +11,11 @@ import android.widget.ImageView;
 import com.hb.fatsecret.R;
 import com.hb.fatsecret.adapter.MyPagerAdapter;
 import com.hb.fatsecret.fragment.SignUpFragment;
-import com.hb.fatsecret.model.Purpose;
+import com.hb.fatsecret.model.Information;
 import com.hb.fatsecret.model.User;
 import com.hb.fatsecret.utils.CustomViewPager;
 import com.hb.fatsecret.utils.SwipeDirection;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,9 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
     private CustomViewPager viewPager;
     private MyPagerAdapter adapter;
 
-    public static List answers;
-
-    User userObject;
+    public static User userObject;
 
     public static Drawable stateNormal, stateClick;
 
@@ -51,10 +46,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     private void initParams() {
         userObject = new User();
-        userObject.setPurpose(new Purpose());
-
-        answers = new ArrayList();
-        for (int i = 0; i < 8; i++) answers.add(-1);
+        userObject.setInformation(new Information());
 
         stateNormal = ActivityCompat.getDrawable(this, R.drawable.border_button);
         stateClick = ActivityCompat.getDrawable(this, R.drawable.border_button_click);
@@ -76,10 +68,9 @@ public class QuestionActivity extends AppCompatActivity {
         backPressed();
     }
 
-    public void answerQuestion(int position, Object answer) {
-        answers.set(position, answer);
+    public void goToNextFragment(int position) {
         if (position == 0) {
-            if (answer.equals(CHOICE_MAINTAIN_WEIGHT)) {
+            if (userObject.getInformation().getGoal() == CHOICE_MAINTAIN_WEIGHT) {
                 adapter.setFragment2(false);
             } else {
                 adapter.setFragment2(true);

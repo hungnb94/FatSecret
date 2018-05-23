@@ -21,8 +21,6 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 
-import static com.hb.fatsecret.utils.Constants.SEPERATOR;
-
 public class Welcome5Fragment extends Fragment {
     private final String[] arr = {"kg", "lb"};
 
@@ -60,19 +58,8 @@ public class Welcome5Fragment extends Fragment {
     }
 
     private void updateValueFromActivity() {
-        Object answer = QuestionActivity.answers.get(position);
-        if (answer instanceof String){
-            String str = (String) answer;
-            int pos = str.indexOf(SEPERATOR);
-            editText.setText(str.substring(0, pos));
-            String type = str.substring(pos+1);
-            for (int i=0;i<arr.length;i++){
-                if (arr[i].equals(type)){
-                    spinner.setSelection(i);
-                    return;
-                }
-            }
-        }
+        double answer = QuestionActivity.userObject.getInformation().getCurrentWeight();
+        if (answer > 0) editText.setText(String.valueOf(answer));
     }
 
     @OnTextChanged(R.id.edittext)
@@ -84,9 +71,10 @@ public class Welcome5Fragment extends Fragment {
     @OnClick(R.id.btnNext)
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
+        double weight = Double.valueOf(editText.getText().toString());
+        QuestionActivity.userObject.getInformation().setCurrentWeight(weight);
         QuestionActivity activity = (QuestionActivity) getContext();
-        String answer = editText.getText().toString() + SEPERATOR + arr[spinner.getSelectedItemPosition()];
-        activity.answerQuestion(position, answer);
+        activity.goToNextFragment(position);
     }
 
     @Override

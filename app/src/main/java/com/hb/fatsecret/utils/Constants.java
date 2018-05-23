@@ -41,4 +41,7 @@ public class Constants {
     public static final int CHOICE_LOW_ACTIVE = 2;
     public static final int CHOICE_ACTIVE = 3;
     public static final int CHOICE_VERY_ACTIVE = 4;
+
+    public static final String FIELD_USER_FIREBASE = "users";
+    public static final String FIELD_USER_INFOR_FIREBASE = "information";
 }

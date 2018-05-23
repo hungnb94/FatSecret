@@ -33,9 +33,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hb.fatsecret.R;
 import com.hb.fatsecret.activity.MainActivity;
+import com.hb.fatsecret.activity.QuestionActivity;
 import com.hb.fatsecret.preference.PreferenceManager;
 import com.hb.fatsecret.utils.Constants;
 
@@ -134,6 +138,8 @@ public class SignUpFragment extends Fragment {
         if (btnNext.getAlpha() < 1) return;
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
+        QuestionActivity.userObject.setEmail(email);
+        QuestionActivity.userObject.setPassword(password);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -152,6 +158,13 @@ public class SignUpFragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void saveUserToFirebase() {
+        FirebaseUser firebaseUser= mAuth.getCurrentUser();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                .child(Constants.FIELD_USER_FIREBASE).child(firebaseUser.getUid());
+        ref.child(Constants.FIELD_USER_INFOR_FIREBASE).setValue(QuestionActivity.userObject);
     }
 
     @OnClick(R.id.llSignUpFacebook)
@@ -337,6 +350,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void goToMainActivity() {
+        saveUserToFirebase();
         PreferenceManager pre = new PreferenceManager(getContext());
         pre.setFirstTimeLaunch(false);
 

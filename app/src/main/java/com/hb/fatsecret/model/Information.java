@@ -1,6 +1,6 @@
 package com.hb.fatsecret.model;
 
-public class Purpose {
+public class Information {
     int goal;
     double targetWeight;
     int gender;
@@ -10,8 +10,8 @@ public class Purpose {
     String dateOfBirth;
     String region;
 
-    public Purpose(int goal, double targetWeight, int gender, int activityLevel,
-                   double currentWeight, double height, String dateOfBirth, String region) {
+    public Information(int goal, double targetWeight, int gender, int activityLevel,
+                       double currentWeight, double height, String dateOfBirth, String region) {
         this.goal = goal;
         this.targetWeight = targetWeight;
         this.gender = gender;
@@ -22,7 +22,13 @@ public class Purpose {
         this.region = region;
     }
 
-    public Purpose() {
+    public Information() {
+        this.goal =-1;
+        this.targetWeight=-1;
+        this.gender=-1;
+        this.activityLevel=-1;
+        this.currentWeight=-1;
+        this.height=-1;
     }
 
     public int getGoal() {

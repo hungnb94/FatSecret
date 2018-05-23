@@ -52,16 +52,15 @@ public class Welcome7Fragment extends Fragment {
     }
 
     private void updateValueFromActivity() {
-        Object answer = QuestionActivity.answers.get(position);
-        if (answer instanceof String){
-            String stringDate = (String) answer;
-            StringTokenizer tokenizer = new StringTokenizer(stringDate, Constants.SEPERATOR);
-            try{
+        String dateStr = QuestionActivity.userObject.getInformation().getDateOfBirth();
+        if (dateStr != null) {
+            StringTokenizer tokenizer = new StringTokenizer(dateStr, Constants.SEPERATOR);
+            try {
                 int year = Integer.parseInt(tokenizer.nextToken());
                 int month = Integer.parseInt(tokenizer.nextToken());
                 int dayOfMonth = Integer.parseInt(tokenizer.nextToken());
                 datePicker.init(year, month, dayOfMonth, null);
-            }catch (Exception e){
+            } catch (Exception e) {
                 Log.e(TAG, e.getMessage());
                 e.printStackTrace();
             }
@@ -73,8 +72,10 @@ public class Welcome7Fragment extends Fragment {
         String date = datePicker.getYear()
                 + Constants.SEPERATOR + datePicker.getMonth()
                 + Constants.SEPERATOR + datePicker.getDayOfMonth();
+        Log.i(TAG, "Date of birth: " + date);
+        QuestionActivity.userObject.getInformation().setDateOfBirth(date);
         QuestionActivity activity = (QuestionActivity) getContext();
-        activity.answerQuestion(position, date);
+        activity.goToNextFragment(position);
     }
 
 

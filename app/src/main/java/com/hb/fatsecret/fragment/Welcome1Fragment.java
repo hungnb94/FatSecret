@@ -60,16 +60,13 @@ public class Welcome1Fragment extends Fragment {
     }
 
     private void updateValueFromActivity() {
-        Object value = QuestionActivity.answers.get(position);
-        if (value instanceof Integer) {
-            int i = (int) value;
-            if (i == CHOICE_WEIGHT_LOSS) {
-                chooseWeightLoss();
-            } else if (i == CHOICE_MAINTAIN_WEIGHT) {
-                chooseMaintainWeight();
-            } else if (i == CHOICE_WEIGHT_GAIN) {
-                chooseWeightGain();
-            }
+        int value = QuestionActivity.userObject.getInformation().getGoal();
+        if (value == CHOICE_WEIGHT_LOSS) {
+            chooseWeightLoss();
+        } else if (value == CHOICE_MAINTAIN_WEIGHT) {
+            chooseMaintainWeight();
+        } else if (value == CHOICE_WEIGHT_GAIN) {
+            chooseWeightGain();
         }
     }
 
@@ -85,7 +82,7 @@ public class Welcome1Fragment extends Fragment {
 
     private void chooseWeightLoss() {
         Log.e(TAG, "Choice weight loss");
-        if (choice==CHOICE_WEIGHT_LOSS) return;
+        if (choice == CHOICE_WEIGHT_LOSS) return;
         int prevChoice = choice;
         choice = CHOICE_WEIGHT_LOSS;
         if (prevChoice == choice) return;
@@ -148,8 +145,9 @@ public class Welcome1Fragment extends Fragment {
     @OnClick(R.id.btnNext)
     void clickNext(View view) {
         if (button.getAlpha() < 1) return;
+        QuestionActivity.userObject.getInformation().setGoal(choice);
         QuestionActivity activity = (QuestionActivity) getContext();
-        activity.answerQuestion(position, choice);
+        activity.goToNextFragment(position);
     }
 
     @Override
